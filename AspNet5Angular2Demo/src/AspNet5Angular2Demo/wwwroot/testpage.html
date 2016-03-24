@@ -1,0 +1,70 @@
+﻿<html>
+<head>
+    
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    
+</head>
+
+<body>
+    <!--<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1 class="h">Almáspite</h1>
+            </div>
+        </div>
+    </div>-->
+
+    <!--<div class="selected" *ngIf="selectedClass">
+        <h2>{{selectedClass.name}}</h2>
+    </div>-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="Auth/Login">Login</a></li>
+                    <li><a href="Auth/Logout">Logout</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container-center">
+        <div class="container-center">
+            <h1 class="alert-success">{{title}}</h1>
+            <div>
+                <!--<ul class="classes">
+                    <li *ngFor="#class of classes" (click)="onSelect(class)">
+                        <span class="badge">{{class.id}}</span> {{class.name}}
+                    </li>
+                </ul>-->
+                <div class="list-group">
+                    <button class="list-group-item" *ngFor="#class of classes" (click)="onSelect(class)">
+                        <span class="badge">{{class.id}}</span> {{class.name}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedClass">
+            <h2>{{selectedClass.name}} details!</h2>
+            <div><label class="label label-info">id: </label>{{selectedClass.id}}</div>
+            <div><label class="label label-info">Részletek: </label>{{selectedClass.description}}</div>
+            <div>
+                <label>change the name: </label>
+                <input [(ngModel)]="selectedClass.name" placeholder="name" />
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
