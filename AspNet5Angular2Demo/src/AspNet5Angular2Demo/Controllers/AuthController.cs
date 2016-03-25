@@ -19,11 +19,20 @@ namespace AspNet5Angular2Demo.Controllers
         public AuthController(SignInManager<IdentityUser> signInManager)
         {
             _signInManager = signInManager;
+            //throw new ArgumentException("HALIHÓ");
         }
        
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public string postTest([FromBody] string str)
+        {
+            Console.WriteLine(str);
+            return "postTest Return";
         }
 
         [HttpPost]

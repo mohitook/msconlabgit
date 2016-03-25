@@ -23,26 +23,19 @@ namespace AspNet5Angular2Demo.Controllers
             return _context.Wowclasses.Where(x=>x.Username == User.Identity.Name).ToList();
         }
 
-        //public IEnumerable<Shipment> Get()
-        //{
-        //    return new List<Shipment>
-        //    {
-        //        new Shipment
-        //        {
-        //            Id=1,
-        //            Origin= "Sweden, Norakarmi",
-        //            Destination="Oslo, Norway",
-        //            ShippedDate = DateTime.UtcNow.AddDays(-1.4)
-        //        },
-        //        new Shipment
-        //        {
-        //            Id=2,
-        //            Origin= "Masodik, menet",
-        //            Destination="Akarhova, Mashova",
-        //            ShippedDate = DateTime.UtcNow
-        //        }
-        //};
-        //}
+       /* public IActionResult Post(string str)
+        {
+            Console.WriteLine(str);
+            return null;
+        }*/
+
+        [HttpPost]
+        //[Route("login")]
+        public string postTest([FromBody]string str)
+        {
+            Console.WriteLine(str);
+            return "postTest Return";
+        }
 
     }
 }

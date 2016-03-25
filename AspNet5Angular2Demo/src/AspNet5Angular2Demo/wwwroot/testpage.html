@@ -1,8 +1,7 @@
 ﻿<html>
 <head>
-    
+   
     <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    
 </head>
 
 <body>
@@ -33,10 +32,18 @@
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="Auth/Login">Login</a></li>
                     <li><a href="Auth/Logout">Logout</a></li>
+                    <li><a [routerLink]="['Login']">Heroes</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
     </nav>
+    <div>
+        <nav>
+            <a [routerLink]="['Login']">Login</a>
+        </nav>
+        <router-outlet></router-outlet>
+    </div>
+ 
     <div class="container-center">
         <div class="container-center">
             <h1 class="alert-success">{{title}}</h1>

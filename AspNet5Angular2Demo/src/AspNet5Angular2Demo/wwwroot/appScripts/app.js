@@ -8,16 +8,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('angular2/core');
+var router_1 = require('angular2/router');
+var login_1 = require('./login');
 var wowclass_1 = require("./wowclass");
 var http_1 = require('angular2/http');
+var http_2 = require('angular2/http');
 require('rxjs/Rx');
 var AppComponent = (function () {
     function AppComponent(http) {
         this.http = http;
         this.classes = [];
         this.title = 'World of Warcraft Classes';
+        this.postData();
         this.getData();
     }
+    AppComponent.prototype.postData = function () {
+        console.log("postData start");
+        var creds = {
+            str: 'testst'
+        };
+        var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
+        this.http.post('http://localhost:11151/api/data', JSON.stringify('asdadasd'), { headers: headers }).subscribe(function (err) { return console.log(err); });
+        ;
+        console.log("PostData end");
+    };
     AppComponent.prototype.getData = function () {
         var _this = this;
         this.http.get('http://localhost:11151/api/data').
@@ -40,8 +54,14 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: './testpage.html',
-            styleUrls: ['mainstyle.css']
-        }), 
+            styleUrls: ['mainstyle.css'],
+            directives: [router_1.ROUTER_DIRECTIVES],
+            providers: [router_1.ROUTER_PROVIDERS]
+        }),
+        router_1.RouteConfig([
+            { path: '/login', name: 'Login', component: login_1.Login },
+            { path: '/login2', name: 'Login2', component: login_1.Login }
+        ]), 
         __metadata('design:paramtypes', [http_1.Http])
     ], AppComponent);
     return AppComponent;

@@ -1,14 +1,25 @@
 ﻿import {Component} from 'angular2/core';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import {Class} from './class';
+import {Login} from './login';
 import {Wowclass} from "./wowclass";
 import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
+import {Headers} from 'angular2/http';
 import 'rxjs/Rx';
 
 @Component({
     selector: 'my-app',
     templateUrl: './testpage.html',
-    styleUrls:['mainstyle.css']
+    styleUrls: ['mainstyle.css'],
+    directives: [ROUTER_DIRECTIVES],
+    providers: [ROUTER_PROVIDERS]
 })
+
+@RouteConfig([
+        { path: '/login', name: 'Login', component: Login },
+        { path: '/login2', name: 'Login2', component: Login }
+])
+
 export class AppComponent {
     
     classes: Array<Wowclass> = [];
@@ -17,7 +28,19 @@ export class AppComponent {
     public constructor(
         public http: Http
     ) {
+        this.postData();
         this.getData();
+        
+    }
+
+    postData() {
+        console.log("postData start");
+        var creds = {
+            str: 'testst'
+        };
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        this.http.post('http://localhost:11151/api/data', JSON.stringify('asdadasd'), { headers: headers }).subscribe(err=> console.log(err));;
+        console.log("PostData end");
     }
 
     getData() {

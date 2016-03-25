@@ -9,10 +9,10 @@ namespace AspNet5Angular2Demo.ViewModels
     public class LoginViewModel
     {
         
-        [Required]
+        //[Required]
         [Display(Name = "Username")] //az input mező feletti label-t tölti fel
         public string Username { get; set; }
-        [Required]
+       // [Required]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
